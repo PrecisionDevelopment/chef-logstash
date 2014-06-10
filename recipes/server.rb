@@ -39,6 +39,7 @@ end
 
 my_templates  = {
   'input_syslog' => 'config/input_syslog.conf.erb',
+  'input_rabbitmq' => 'config/input_rabbitmq.conf.erb',
   'output_stdout' => 'config/output_stdout.conf.erb',
   'output_elasticsearch' => 'config/output_elasticsearch.conf.erb'
 }
