@@ -2,5 +2,12 @@ input {
   rabbitmq {
     host => "127.0.0.1"
     exchange => "logstash"
+    key => "log4net.gelf.appender"
+  }
+
+  rabbitmq {
+    host => "127.0.0.1"
+    exchange => "logstash"
+    queue => "logstash"
   }
 }
