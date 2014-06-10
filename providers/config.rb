@@ -19,7 +19,7 @@ def load_current_resource
     attributes = node['logstash']['instance']['default']
   end
   @basedir = attributes['basedir'] || defaults['basedir']
-  @templates = attributes['config_templates'] || defaults['config_templates']
+  @templates = new_resource.templates || attributes['config_templates'] || defaults['config_templates']
   @templates_cookbook = new_resource.templates_cookbook  || attributes['config_templates_cookbook'] || defaults['config_templates_cookbook']
   @variables = new_resource.variables || attributes['config_templates_variables'] || defaults['config_templates_variables']
   @owner     = new_resource.owner || attributes['user'] || defaults['user']
