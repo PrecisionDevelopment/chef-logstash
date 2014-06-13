@@ -35,7 +35,15 @@ default['logstash']['instance']['default']['plugins_check_if_installed']  = 'lib
 
 default['logstash']['instance']['default']['log_file']       = 'logstash.log'
 default['logstash']['instance']['default']['xms']        = '1024M'
+
 default['logstash']['instance']['default']['xmx']        = "#{(node['memory']['total'].to_i * 0.6).floor / 1024}M"
+
+if node["memory"].nil?
+  default['logstash']['instance']['default']['xmx'] = "#{(node.kernel.os_info.total_visible_memory_size.to_i * 0.6 ).floor / 1024}m"
+else
+  default['logstash']['instance']['default']['xmx'] = "#{(node.memory.total.to_i * 0.6 ).floor / 1024}m"
+end
+
 default['logstash']['instance']['default']['java_opts']  = ''
 default['logstash']['instance']['default']['gc_opts']    = '-XX:+UseParallelOldGC'
 default['logstash']['instance']['default']['ipv4_only']  = false
